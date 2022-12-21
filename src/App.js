@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function App() {
   let [theme, setTheme] = useState("primary");
+  let [list] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
   let makePrimaryTheme = () => {
     theme = "primary";
@@ -42,6 +43,15 @@ function App() {
         value="Danger Theme"
         onClick={makeDangerTheme}
       />
+
+      {list.map((item) => (
+        <div className={`alert alert-${theme} my-2`}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non sunt
+          consequatur et vel sint, nihil ipsum, a, aperiam accusantium
+          repudiandae facilis exercitationem quasi quas mollitia maxime
+          molestiae veritatis! Voluptatum, odio.
+        </div>
+      ))}
     </div>
   );
 }
