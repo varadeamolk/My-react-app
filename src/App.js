@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function App() {
   // stateless variable
-  let counter = 100;
+  // let counter = 100;
   // let counter = 10;
   let [counter, setCounter] = useState(10);
 
