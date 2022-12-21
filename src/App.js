@@ -2,25 +2,14 @@ import { useState } from "react";
 
 function App() {
   let [theme, setTheme] = useState("primary");
-  let [list] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
-  let makePrimaryTheme = () => {
-    theme = "primary";
-
-    setTheme(theme);
-  };
-
-  let makeSuccessTheme = () => {
-    theme = "success";
+  // Member function
+  let updateTheme = (p1 = "primary") => {
+    theme = p1;
 
     setTheme(theme);
   };
 
-  let makeDangerTheme = () => {
-    theme = "danger";
-
-    setTheme(theme);
-  };
   return (
     <div>
       <h1 className={`bg-${theme} text-light p-2`}>Bootstrap styling</h1>
@@ -29,29 +18,23 @@ function App() {
         className="btn btn-primary btn-sm me-1"
         type="button"
         value="Primary Theme"
-        onClick={makePrimaryTheme}
+        //onClick={updateTheme}
+        onClick={() => updateTheme("primary")}
       />
       <input
         className="btn btn-success btn-sm me-1"
         type="button"
         value="Success Theme"
-        onClick={makeSuccessTheme}
+        // onClick={updateTheme}
+        onClick={() => updateTheme("success")}
       />
       <input
         className="btn btn-danger btn-sm me-1"
         type="button"
         value="Danger Theme"
-        onClick={makeDangerTheme}
+        // onClick={updateTheme}
+        onClick={() => updateTheme("danger")}
       />
-
-      {list.map((item) => (
-        <div className={`alert alert-${theme} my-2`}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non sunt
-          consequatur et vel sint, nihil ipsum, a, aperiam accusantium
-          repudiandae facilis exercitationem quasi quas mollitia maxime
-          molestiae veritatis! Voluptatum, odio.
-        </div>
-      ))}
     </div>
   );
 }
