@@ -15,6 +15,14 @@ function App() {
     setMessageList(messageList);
   };
 
+  let createMessage = async () => {
+    let url = `http://localhost:3001/messages`;
+
+    let data = { message: "Hello", messageTime: new Date() };
+    let response = await axios.post(url, data);
+     
+  };
+
   return (
     <div>
       <h1>{title}</h1>
@@ -22,6 +30,12 @@ function App() {
         type="button"
         value="make ajax/API call"
         onClick={getAllMessages}
+      />
+
+      <input
+        type="button"
+        value="make ajax/post call"
+        onClick={createMessage}
       />
 
       {messageList.map((item) => (
