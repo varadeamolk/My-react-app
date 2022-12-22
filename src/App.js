@@ -1,39 +1,39 @@
-import { useState } from "react";
-
 function App() {
-  let [theme, setTheme] = useState("primary");
-
-  // Member function
-  let updateTheme = (p1 = "primary") => {
-    theme = p1;
-
-    setTheme(theme);
+  {
+    /** Default No param */
+  }
+  let clickMe1 = () => {
+    console.log("Hello");
   };
 
+  let clickMe2 = (e) => {
+    console.log(e);
+  };
+
+  let clickMe3 = (p1) => {
+    console.log(p1);
+  };
+
+  let clickMe4 = (e, p1) => {
+    console.log(e, p1);
+  };
   return (
     <div>
-      <h1 className={`bg-${theme} text-light p-2`}>Bootstrap styling</h1>
+      <h1>click Demo</h1>
+      {/** Default No param */}
+      <input type="button" value="Click Me1" onClick={clickMe1} />
 
+      {/** Default Event Param */}
+      <input type="button" value="Click Me2" onClick={clickMe2} />
+
+      {/** Custom Param */}
+      <input type="button" value="Click Me3" onClick={() => clickMe3("ram")} />
+
+      {/** Event + Custom Param */}
       <input
-        className="btn btn-primary btn-sm me-1"
         type="button"
-        value="Primary Theme"
-        //onClick={updateTheme}
-        onClick={() => updateTheme("primary")}
-      />
-      <input
-        className="btn btn-success btn-sm me-1"
-        type="button"
-        value="Success Theme"
-        // onClick={updateTheme}
-        onClick={() => updateTheme("success")}
-      />
-      <input
-        className="btn btn-danger btn-sm me-1"
-        type="button"
-        value="Danger Theme"
-        // onClick={updateTheme}
-        onClick={() => updateTheme("danger")}
+        value="Click Me4"
+        onClick={(e) => clickMe4(e, "shiv")}
       />
     </div>
   );
