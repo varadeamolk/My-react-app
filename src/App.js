@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 function App() {
   let [title] = useState("API INTEGRATION");
   let [messageList, setMessageList] = useState([]);
+  let [message, setMessage] = useState([]);
 
   let getAllMessages = async () => {
     let url = `http://localhost:3001/message`;
@@ -15,25 +16,35 @@ function App() {
     setMessageList(messageList);
   };
 
+  let handleOnChangeMessage = (e) => {
+    let message = e.target.value;
+
+    setMessage(message);
+
+    // or we can write this also  setMessage(e.target.value)
+  };
+
   let createMessage = async () => {
     let url = `http://localhost:3001/messages`;
 
-    let data = { message: "Hello", messageTime: new Date() };
-    let response = await axios.post(url, data);
+    let data = { message: message, messageTime: new Date() };
+    await axios.post(url, data);
+
+    getAllMessages(); // to refreash the content
   };
 
   useEffect(() => {
     // Spl Funcn :: Hook :: Like Constructor ::  Called while the Compoent is Initialized
-    getAllMessages(); // To Refresh the content
+    getAllMessages();
   }, []);
 
   return (
     <div>
       <h1>{title}</h1>
       <input
-        type="button"
-        value="make ajax/API call"
-        onClick={getAllMessages}
+        type="text"
+        placeholder="Enter Message"
+        onChange={handleOnChangeMessage}
       />
 
       <input
@@ -42,8 +53,8 @@ function App() {
         onClick={createMessage}
       />
 
-      {messageList.map((item) => (
-        <div>{item.message}</div>
+      {messageList.map((item, index) => (
+        <div key={index}>{item.message}</div>
       ))}
     </div>
   );
