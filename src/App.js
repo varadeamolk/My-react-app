@@ -1,26 +1,15 @@
 import { useState } from "react";
 
 function App() {
-  let [message, setMessage] = useState("Hello");
+  let [list, setList] = useState(["mumbai", "pune", "nashik"]);
 
-  let updateMessage = (e) => {
-    // e.target.value=document.querySelector("input")
-    console.log(e.target.value);
-
-    setMessage(e.target.value);
-  };
   return (
     <div>
-      <h1>Working with input</h1>
+      <h1>Map Demo</h1>
 
-      <input
-        type="text"
-        placeholder="Enter message"
-        value={message}
-        onChange={updateMessage} // this line is very important
-      />
-
-      <h1>{message}</h1>
+      {list.map((item) => (
+        <div className="alert alert-primary text-dark">{item}</div>
+      ))}
     </div>
   );
 }
