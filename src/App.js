@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   let [title] = useState("API INTEGRATION");
@@ -20,8 +20,12 @@ function App() {
 
     let data = { message: "Hello", messageTime: new Date() };
     let response = await axios.post(url, data);
-     
   };
+
+  useEffect(() => {
+    // Spl Funcn :: Hook :: Like Constructor ::  Called while the Compoent is Initialized
+    getAllMessages(); // To Refresh the content
+  }, []);
 
   return (
     <div>
