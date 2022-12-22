@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
   let [title] = useState("API INTEGRATION");
   let [messageList, setMessageList] = useState([]);
   let [message, setMessage] = useState([]);
+  let inputRef = useRef();
 
   let getAllMessages = async () => {
     let url = `http://localhost:3001/message`;
@@ -27,10 +28,22 @@ function App() {
   let createMessage = async () => {
     let url = `http://localhost:3001/messages`;
 
+    // console.log(inputRef.current);
+    if (!inputRef.current.checkValidity()) {
+      alert("invalid message");
+      return;
+    }
+
     let data = { message: message, messageTime: new Date() };
     await axios.post(url, data);
 
-    getAllMessages(); // to refreash the content
+    getAllMessages(); // to refresh the content
+  };
+
+  let checkEnterCode = (e) => {
+    if (e.keyCode == 13) {
+      createMessage();
+    }
   };
 
   useEffect(() => {
@@ -45,6 +58,10 @@ function App() {
         type="text"
         placeholder="Enter Message"
         onChange={handleOnChangeMessage}
+        onKeyUp={checkEnterCode}
+        ref={inputRef}
+        required
+        minLength={3}
       />
 
       <input
