@@ -53,25 +53,36 @@ function App() {
 
   return (
     <div>
-      <h1>{title}</h1>
-      <input
-        type="text"
-        placeholder="Enter Message"
-        onChange={handleOnChangeMessage}
-        onKeyUp={checkEnterCode}
-        ref={inputRef}
-        required
-        minLength={3}
-      />
-
-      <input
-        type="button"
-        value="make ajax/post call"
-        onClick={createMessage}
-      />
+      <h1 className="bg-primary text-light fs-2 p-3">{title}</h1>
+      <div className="d-flex ">
+        <input
+          className="form-control"
+          type="text"
+          placeholder="Enter Message"
+          onChange={handleOnChangeMessage}
+          onKeyUp={checkEnterCode}
+          ref={inputRef}
+          required
+          minLength={3}
+        />
+        <input
+          className="btn btn-primary btn-sm"
+          type="button"
+          value="make ajax/post call"
+          onClick={createMessage}
+        />
+      </div>
 
       {messageList.map((item, index) => (
-        <div key={index}>{item.message}</div>
+        <div key={index}>
+          <div className="badge text-bg-primary opacity-75">
+            {item.message}
+            <span className="ms-4">
+              {new Date(item.messageTime).getHours()}:
+              {new Date(item.messageTime).getMinutes()}
+            </span>
+          </div>
+        </div>
       ))}
     </div>
   );
