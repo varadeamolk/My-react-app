@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function App() {
+  let [message, setMessage] = useState("");
   let [list, setList] = useState([
     { message: "Hello", messageTime: new Date() },
     { message: "Hi", messageTime: new Date() },
@@ -9,8 +10,15 @@ function App() {
   ]);
 
   // member function
+
+  let updateMessage = (e) => {
+    let message = e.target.value;
+
+    setMessage(message);
+  };
+
   let addMessage = () => {
-    let newMessage = { message: "Hello Everyone", messageTime: new Date() };
+    let newMessage = { message: message, messageTime: new Date() };
     list = [newMessage, ...list];
 
     setList(list);
@@ -23,7 +31,9 @@ function App() {
         <input
           className="form-control me-2"
           type="text"
+          value={message}
           placeholder="Enter message"
+          onChange={updateMessage}
         />
         <input
           className="btn btn-primary btn-sm"
@@ -39,7 +49,7 @@ function App() {
             <div>
               {item.message}
               <span className="ms-5">
-                {item.messageTime.getUTCHours()}:{item.messageTime.getMinutes()}
+                {item.messageTime.getHours()}:{item.messageTime.getMinutes()}
               </span>
             </div>
           </div>
