@@ -3,13 +3,11 @@ import Home from "./components/Home";
 import Notifications from "./components/Notifications";
 import Explore from "./components/Explore";
 import PageNotFound from "./components/PageNotFound";
+import AppNavLinks from "./components/AppNavLinks";
 function App() {
   return (
     <div>
-      <Link to={"/home"}>Home |</Link>
-      <Link to={"/explore"}>Explore |</Link>
-      <Link to={"/notifications"}>Notifications</Link>
-
+      <AppNavLinks />
       <Routes>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/explore" element={<Explore />}></Route>
