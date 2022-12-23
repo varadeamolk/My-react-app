@@ -8,8 +8,8 @@ function App() {
 
       <Routes>
         <Route path="/home" element={<Home />}></Route>
-        <Route path="/notifications" element={<Notifications />}></Route>
         <Route path="/explore" element={<Explore />}></Route>
+        <Route path="/notifications" element={<Notifications />}></Route>
         <Route path="/*" element={<PageNotFound />}></Route>
       </Routes>
     </div>
