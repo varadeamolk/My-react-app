@@ -1,4 +1,8 @@
 import { Routes, Route, Link } from "react-router-dom";
+import Home from "./components/Home";
+import Notifications from "./components/Notifications";
+import Explore from "./components/Explore";
+import PageNotFound from "./components/PageNotFound";
 function App() {
   return (
     <div>
@@ -12,38 +16,6 @@ function App() {
         <Route path="/notifications" element={<Notifications />}></Route>
         <Route path="/*" element={<PageNotFound />}></Route>
       </Routes>
-    </div>
-  );
-}
-
-function Home() {
-  return (
-    <div>
-      <h1>I am Home</h1>
-    </div>
-  );
-}
-
-function Notifications() {
-  return (
-    <div>
-      <h1>I have Notifications</h1>
-    </div>
-  );
-}
-
-function Explore() {
-  return (
-    <div>
-      <h1>I am Explore</h1>
-    </div>
-  );
-}
-
-function PageNotFound() {
-  return (
-    <div>
-      <h1>Page is not available</h1>
     </div>
   );
 }
