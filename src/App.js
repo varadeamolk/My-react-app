@@ -1,15 +1,12 @@
-import AppHeader from "./components/AppHeader";
-import AppBody from "./components/AppBody";
-import AppFooter from "./components/AppFooter";
-
+import { Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <div>
-      <AppHeader />
-      <AppBody />
-      <AppBody />
-      <AppFooter />
-    </div>
+    <Routes>
+      <Route path="/" element={<h1>Home</h1>}></Route>
+      <Route path="/home" element={<h1>Home</h1>}></Route>
+      <Route path="/explore" element={<h1>Explore</h1>}></Route>
+      <Route path="/*" element={<h1>Page not found</h1>}></Route>
+    </Routes>
   );
 }
 
